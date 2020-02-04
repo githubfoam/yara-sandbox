@@ -1,0 +1,19 @@
+---
+- hosts: control01 #ubuntu-19.04
+  become: yes # This means that all tasks will be executed with sudo
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  tasks:
+   - name: "APT: Install aptitude package"
+     apt:
+        name: aptitude
+        
+- hosts: control02
+  become: yes # This means that all tasks will be executed with sudo
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  tasks:
+    - name: "Enable EPEL"
+      yum:
+        name: epel-release
+        state: present
