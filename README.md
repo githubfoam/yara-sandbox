@@ -159,19 +159,6 @@ Time: 116.973 sec (1 m 56 s)
 
 ~~~~
 
-remote scan
-~~~~
-[vagrant@control02 ~]$ whoami
-vagrant
-[vagrant@control02 ~]$ id vagrant
-uid=1000(vagrant) gid=1000(vagrant) groups=1000(vagrant)
-[vagrant@control02 ~]$ ansible-inventory --inventory-file=/vagrant/hosts --graph
-@all:
-  |--@clients:
-  |  |--control01
-  |--@ungrouped:
-
-~~~~
 ~~~~
 >vagrant provision control02
 ==> control02: Running provisioner: ansible_local...

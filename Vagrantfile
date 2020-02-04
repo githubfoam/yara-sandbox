@@ -1,10 +1,10 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-$docker_compose_script = <<SCRIPT
+$clamav_script = <<SCRIPT
 #Install clamav python3
 apt-get update && apt-get -y install python3 python3-pip clamav
 cd /tmp && git clone https://github.com/Hestat/lw-yara.git
-clamscan -ir -l /tmp/scanresults.txt -d /tmp/lw-yara/lw-rules_index.yar -d /tmp/lw-yara/lw.hdb /home
+clamscan -ir -l /vagrant/scanresults.txt -d /tmp/lw-yara/lw-rules_index.yar -d /tmp/lw-yara/lw.hdb /home
 SCRIPT
 
 Vagrant.configure("2") do |config|
@@ -30,6 +30,7 @@ Vagrant.configure("2") do |config|
       echo "192.168.45.11 control02.local control02" |sudo tee -a /etc/hosts
       echo "192.168.45.12 control03.local control03" |sudo tee -a /etc/hosts
       echo "name: nameserver, ip: 8.8.8.8 " |sudo tee -a /etc/resolv.conf
+      webtier.vm.provision "shell", inline: $clamav_script, privileged: false
       echo "===================================================================================="
                                 hostnamectl status
       echo "===================================================================================="
