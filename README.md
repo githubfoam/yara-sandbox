@@ -169,3 +169,8 @@ or adapt the provisioner `version` option in your Vagrantfile.
 See https://docs.vagrantup.com/v2/provisioning/ansible_common.html#version
 for more information.
 ~~~~
+
+~~~~
+https://github.com/Hestat/lw-yara
+https://github.com/Hestat/blazescan
+~~~~
